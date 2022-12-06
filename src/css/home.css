@@ -1,0 +1,15 @@
+.home > .row {
+  height: 85vh;
+  border: 2px solid red;
+}
+
+#main {
+  background-image: url("../img/mainBG.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#footer > .nav {
+  flex-direction: column;
+  justify-content: flex-end;
+}

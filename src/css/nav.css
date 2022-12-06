@@ -1,0 +1,8 @@
+#nav > .row {
+  height: 10vh;
+  text-transform: capitalize;
+}
+
+.navbar-collapse {
+  text-transform: capitalize;
+}

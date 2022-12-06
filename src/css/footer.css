@@ -1,0 +1,10 @@
+.footer-style {
+  background-color: #e74308;
+  color: white;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+li {
+  color: white;
+}

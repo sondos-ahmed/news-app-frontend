@@ -1,0 +1,26 @@
+@media only screen and (min-width: 768px) {
+  .row {
+    text-align: end;
+  }
+}
+
+#header > .row {
+  height: 10vh;
+}
+
+.site-name {
+  color: #e74308;
+  text-decoration: none;
+}
+a.site-name :active {
+  color: #e74308;
+  text-decoration: none;
+}
+a.site-name :visited {
+  color: #e74308;
+  text-decoration: none;
+}
+a.site-name :hover {
+  color: #e74308;
+  text-decoration: none;
+}
