@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 
 const newsApp = axios.create({
   baseURL: "https://helpful-foal-tie.cyclic.app/",

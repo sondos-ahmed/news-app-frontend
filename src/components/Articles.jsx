@@ -1,9 +1,7 @@
 import Card from "react-bootstrap/Card";
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getAllArticles } from "../api.js";
-import Header from "./Header.jsx";
 
 function Articles() {
   const [allArticles, setAllArticles] = useState([]);

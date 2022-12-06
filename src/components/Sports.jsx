@@ -1,6 +1,5 @@
 import Card from "react-bootstrap/Card";
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getLatestSportsArticles } from "../api.js";
 

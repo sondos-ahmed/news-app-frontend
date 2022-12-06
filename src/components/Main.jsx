@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getHotArticle, getLatestTechArticle } from "../api.js";
 import "../css/main.css";

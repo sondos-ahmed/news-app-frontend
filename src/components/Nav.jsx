@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
 import { getAllTopics } from "../api.js";
-import { LinkContainer } from "react-router-bootstrap";
 import "../css/nav.css";
 
 function NavBootstrape() {
