@@ -22,7 +22,7 @@ function Articles() {
     <div>
       {allArticles.map((article) => {
         return (
-          <Card key={article.article_id} className='m-3'>
+          <Card key={article.article_id} className='m-3 p-3'>
             <Card.Title>{article?.title}</Card.Title>
             <Card.Subtitle className='mb-2 text-muted'>
               {article?.topic}
