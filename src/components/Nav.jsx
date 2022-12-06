@@ -18,7 +18,7 @@ function NavBootstrape() {
     getAllTopics().then((res) => {
       setTopics(res.data.topics);
     });
-  }, []);
+  });
 
   return (
     <Row id='nav'>
