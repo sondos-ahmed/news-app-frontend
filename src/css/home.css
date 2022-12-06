@@ -9,10 +9,6 @@
   background-size: cover;
 }
 
-.spinner {
-  background-image: none;
-}
-
 #footer > .nav {
   flex-direction: column;
   justify-content: flex-end;

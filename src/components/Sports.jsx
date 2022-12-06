@@ -12,10 +12,10 @@ function Sports({ loading, setLoading }) {
       setlatestSports(articles);
       setLoading(false);
     });
-  }, [loading]);
+  }, []);
 
   return loading ? (
-    <Spinner animation='border' role='status'>
+    <Spinner animation='border' role='status' className='spinner'>
       <span className='visually-hidden'>Loading...</span>
     </Spinner>
   ) : (

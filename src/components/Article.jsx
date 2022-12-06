@@ -6,9 +6,7 @@ function Article() {
   const { article_id } = useParams();
 
   useEffect(() => {
-    getArticleById(article_id).then(({ data: { article } }) => {
-      console.log(article);
-    });
+    getArticleById(article_id).then(({ data: { article } }) => {});
   }, [article_id]);
   return (
     <section>

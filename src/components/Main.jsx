@@ -11,7 +11,6 @@ function Main({ loading, setLoading }) {
 
   useEffect(() => {
     getHotArticle().then((article) => {
-      const currentloading = true;
       if (article) {
         const newarticle = { ...article };
         newarticle.created_at = newarticle.created_at.substring(0, 10);
@@ -19,7 +18,7 @@ function Main({ loading, setLoading }) {
         setLoading(false);
       }
     });
-  }, [loading]);
+  }, []);
 
   useEffect(() => {
     getLatestTechArticle().then((article) => {
@@ -32,7 +31,7 @@ function Main({ loading, setLoading }) {
   }, []);
 
   return loading ? (
-    <Spinner animation='border' role='status'>
+    <Spinner animation='border' role='status' className='spinner'>
       <span className='visually-hidden'>Loading...</span>
     </Spinner>
   ) : (

@@ -10,22 +10,21 @@ function Cooking({ loading, setLoading }) {
 
   useEffect(() => {
     getOrderedCookingsArticles().then((articles) => {
-      console.log(articles);
       setcookingArticles(articles);
       setLoading(false);
     });
-  }, [loading]);
+  }, []);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
   return loading ? (
-    <Spinner animation='border' role='status'>
+    <Spinner animation='border' role='status' className='spinner'>
       <span className='visually-hidden'>Loading...</span>
     </Spinner>
   ) : (
     <section>
-      <h2>Cooking Articles</h2>
+      <h2 className='mt-3'>Cooking Articles</h2>
       <Carousel
         variant='dark'
         className='d-block'
