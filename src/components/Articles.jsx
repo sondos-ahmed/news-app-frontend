@@ -27,9 +27,8 @@ function Articles() {
             <Card.Subtitle className='mb-2 text-muted'>
               {article?.topic}
             </Card.Subtitle>
-            <Card.Link>
-              <Link to={`/articles/${article?.article_id}`}>Article Link</Link>
-            </Card.Link>
+
+            <Link to={`/articles/${article?.article_id}`}>Article Link</Link>
           </Card>
         );
       })}

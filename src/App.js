@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/articles/:article-id' element={<Article />} />
+        <Route path='/articles/:article_id' element={<Article />} />
         <Route path='/articles' element={<Articles />} />
       </Routes>
     </Container>
