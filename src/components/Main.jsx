@@ -3,20 +3,23 @@ import { Link } from "react-router-dom";
 import { getHotArticle, getLatestTechArticle } from "../api.js";
 import "../css/main.css";
 import Card from "react-bootstrap/Card";
+import Spinner from "react-bootstrap/Spinner";
 
-function Main() {
+function Main({ loading, setLoading }) {
   const [hotArticle, sethotArticle] = useState();
   const [latestTech, setlatestTech] = useState();
 
   useEffect(() => {
     getHotArticle().then((article) => {
+      const currentloading = true;
       if (article) {
         const newarticle = { ...article };
         newarticle.created_at = newarticle.created_at.substring(0, 10);
         sethotArticle(newarticle);
+        setLoading(false);
       }
     });
-  }, []);
+  }, [loading]);
 
   useEffect(() => {
     getLatestTechArticle().then((article) => {
@@ -28,15 +31,17 @@ function Main() {
     });
   }, []);
 
-  return (
+  return loading ? (
+    <Spinner animation='border' role='status'>
+      <span className='visually-hidden'>Loading...</span>
+    </Spinner>
+  ) : (
     <div className='main'>
       <Card>
         <Card.Body>
           <Card.Title>{hotArticle?.title}</Card.Title>
           <Card.Subtitle className='mb-2 text-muted'>Hot topic</Card.Subtitle>
-          <Card.Link>
-            <Link to={`/articles/${hotArticle?.article_id}`}>Article Link</Link>
-          </Card.Link>
+          <Link to={`/articles/${hotArticle?.article_id}`}>Article Link</Link>
         </Card.Body>
       </Card>
 
@@ -48,9 +53,7 @@ function Main() {
             {latestTech?.created_at}
           </Card.Subtitle>
 
-          <Card.Link>
-            <Link to={`/articles/${latestTech?.article_id}`}>Article Link</Link>
-          </Card.Link>
+          <Link to={`/articles/${latestTech?.article_id}`}>Article Link</Link>
         </Card.Body>
       </Card>
     </div>

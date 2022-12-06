@@ -7,20 +7,18 @@ function Footer() {
     <section className='footer-style'>
       <Nav defaultActiveKey='/home' as='ul' className='mt-auto'>
         <Nav.Item as='li'>
-          <Nav.Link class='link-light m-2'>Sports</Nav.Link>
+          <Nav.Link className='link-light m-2'>Sports</Nav.Link>
         </Nav.Item>
         <Nav.Item as='li'>
-          <Nav.Link class='link-light m-2'>Cooking</Nav.Link>
+          <Nav.Link className='link-light m-2'>Cooking</Nav.Link>
         </Nav.Item>
         <Nav.Item as='li'>
-          <Nav.Link class='link-light m-2'>Tech</Nav.Link>
+          <Nav.Link className='link-light m-2'>Tech</Nav.Link>
         </Nav.Item>
         <Nav.Item as='li'>
-          <Nav.Link>
-            <Link class='link-light m-2' to={`/articles`}>
-              Articles
-            </Link>
-          </Nav.Link>
+          <Link className='link-light m-2' to={`/articles`}>
+            Articles
+          </Link>
         </Nav.Item>
       </Nav>
     </section>

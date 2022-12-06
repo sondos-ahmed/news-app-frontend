@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { getOrderedCookingsArticles } from "../api.js";
 import { Link } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
-function Cooking() {
+function Cooking({ loading, setLoading }) {
   const [index, setIndex] = useState(0);
   const [cookingArticles, setcookingArticles] = useState([]);
 
@@ -11,13 +12,18 @@ function Cooking() {
     getOrderedCookingsArticles().then((articles) => {
       console.log(articles);
       setcookingArticles(articles);
+      setLoading(false);
     });
-  }, []);
+  }, [loading]);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
-  return (
+  return loading ? (
+    <Spinner animation='border' role='status'>
+      <span className='visually-hidden'>Loading...</span>
+    </Spinner>
+  ) : (
     <section>
       <h2>Cooking Articles</h2>
       <Carousel

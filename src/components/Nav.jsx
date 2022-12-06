@@ -16,9 +16,10 @@ function NavBootstrape() {
 
   useEffect(() => {
     getAllTopics().then((res) => {
+      console.log(res.data);
       setTopics(res.data.topics);
     });
-  });
+  }, []);
 
   return (
     <Row id='nav'>

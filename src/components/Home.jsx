@@ -5,19 +5,23 @@ import Main from "./Main";
 import Sports from "./Sports";
 import Cooking from "./Cooking";
 import Footer from "./Footer";
+import { useState } from "react";
+import Spinner from "react-bootstrap/Spinner";
 
 function Home() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <Container className='home'>
       <Row id='main'>
-        <Main />
+        <Main setLoading={setLoading} loading={loading} />
       </Row>
       <Row id='football'>
-        <Sports />
+        <Sports setLoading={setLoading} loading={loading} />
       </Row>
       <Row id='cooking'>
         {" "}
-        <Cooking />
+        <Cooking setLoading={setLoading} loading={loading} />
       </Row>
       <Row id='footer'>
         <Footer />

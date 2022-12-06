@@ -56,6 +56,12 @@ export function getOrderedCookingsArticles() {
       params: { sorted_by: "created_at", topic: "cooking" },
     })
     .then(({ data: { articles } }) => {
+      console.log(articles);
       return articles;
     });
+}
+///////// Ticket 5  View an individual article///////////
+
+export function getArticleById(article_id) {
+  return newsApp.get(`api/articles/${article_id}`);
 }
