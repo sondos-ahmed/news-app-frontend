@@ -1,6 +1,6 @@
 .home > .row {
   height: 85vh;
-  border: 2px solid red;
+  border: 2px solid rgb(227, 227, 227);
 }
 
 #main {

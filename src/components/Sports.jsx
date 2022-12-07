@@ -20,6 +20,7 @@ function Sports({ loading, setLoading }) {
     </Spinner>
   ) : (
     <section>
+      <h2 className='mt-3'>Recent Sports Articles</h2>
       {latestSports.map((article, index) => {
         if (index <= 2) {
           return (

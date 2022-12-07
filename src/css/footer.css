@@ -4,7 +4,10 @@
   text-transform: capitalize;
   font-weight: bold;
 }
-
+img {
+  width: 50px;
+  height: 50px;
+}
 li {
   color: white;
 }
