@@ -56,12 +56,17 @@ export function getOrderedCookingsArticles() {
       params: { sorted_by: "created_at", topic: "cooking" },
     })
     .then(({ data: { articles } }) => {
-      console.log(articles);
       return articles;
     });
 }
 ///////// Ticket 5  View an individual article///////////
 
 export function getArticleById(article_id) {
-  return newsApp.get(`api/articles/${article_id}`);
+  return newsApp.get(`api/articles/${article_id}`).then((res) => {
+    const newArticle = { ...res.data.article };
+    const date = new Date(newArticle.created_at);
+    newArticle.created_at = date.toDateString();
+
+    return newArticle;
+  });
 }
