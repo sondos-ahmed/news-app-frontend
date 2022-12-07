@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticleComments } from "../api.js";
+import { getArticleComments } from "../../api.js";
 import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
 

@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Article from "./components/Article";
+import Article from "./components/Article/Article";
 import Articles from "./components/Articles";
 
 import "bootstrap/dist/css/bootstrap.min.css";

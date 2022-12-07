@@ -3,11 +3,11 @@ import {
   getArticleById,
   getArticleComments,
   patchArticleVotes,
-} from "../api.js";
+} from "../../api.js";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
 import Spinner from "react-bootstrap/Spinner";
-import "../css/article.css";
+import "../../css/article.css";
 import Alert from "react-bootstrap/Alert";
 
 export function Article() {
@@ -16,7 +16,7 @@ export function Article() {
   const [incrementBy, setincrementBy] = useState(0);
   const { article_id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [visibility, setvisibility] = useState("invisible");
+  const [show, setShow] = useState(false);
 
   console.log(incrementBy);
   useEffect(() => {
@@ -34,10 +34,10 @@ export function Article() {
     });
     patchArticleVotes(article_id)
       .then(() => {
-        setvisibility("invisible");
+        setShow(false);
       })
       .catch(() => {
-        setvisibility("visible");
+        setShow(true);
       });
   }
   return loading ? (
@@ -47,7 +47,7 @@ export function Article() {
   ) : (
     <section className=' m-3'>
       {" "}
-      <Alert variant='danger' className={visibility}>
+      <Alert variant='danger' show={show}>
         Request failed, please try again!
       </Alert>
       <section className='article-card'>
