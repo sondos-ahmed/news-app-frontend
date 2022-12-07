@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import Comments from "./Comments";
 import Spinner from "react-bootstrap/Spinner";
 import "../css/article.css";
+import Alert from "react-bootstrap/Alert";
 
 export function Article() {
   const [article, setArticle] = useState();
@@ -15,6 +16,7 @@ export function Article() {
   const [incrementBy, setincrementBy] = useState(0);
   const { article_id } = useParams();
   const [loading, setLoading] = useState(true);
+  const [visibility, setvisibility] = useState("invisible");
 
   console.log(incrementBy);
   useEffect(() => {
@@ -30,7 +32,13 @@ export function Article() {
       const newRating = currentRating + 1;
       return newRating;
     });
-    patchArticleVotes(article_id);
+    patchArticleVotes(article_id)
+      .then(() => {
+        setvisibility("invisible");
+      })
+      .catch(() => {
+        setvisibility("visible");
+      });
   }
   return loading ? (
     <Spinner animation='border' role='status'>
@@ -38,8 +46,12 @@ export function Article() {
     </Spinner>
   ) : (
     <section className=' m-3'>
+      {" "}
+      <Alert variant='danger' className={visibility}>
+        Request failed, please try again!
+      </Alert>
       <section className='article-card'>
-        <p className='d-inline '> Article |</p>{" "}
+        <p className='d-inline'> Article |</p>{" "}
         <p className='d-inline text-capitalize '> {article?.topic}</p>
         <button type='button' onClick={handelRating}>
           <span className='star float-end border p-2'>{rating} &#9733;</span>{" "}
