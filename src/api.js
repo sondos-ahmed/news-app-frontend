@@ -56,7 +56,6 @@ export function getOrderedCookingsArticles() {
       params: { sorted_by: "created_at", topic: "cooking" },
     })
     .then(({ data: { articles } }) => {
-      console.log(articles);
       return articles;
     });
 }
@@ -66,10 +65,7 @@ export function getArticleById(article_id) {
   return newsApp.get(`api/articles/${article_id}`).then((res) => {
     const newArticle = { ...res.data.article };
     const date = new Date(newArticle.created_at);
-    console.log(date);
     newArticle.created_at = date.toDateString();
-
-    console.log(newArticle);
 
     return newArticle;
   });
