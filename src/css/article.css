@@ -13,3 +13,17 @@
 .comments-card > .card-body {
   padding: 0;
 }
+
+/* Ratting star */
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
