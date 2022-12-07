@@ -14,7 +14,7 @@ function Header() {
       </Col>
       <Col sm={4}>
         {" "}
-        <p class='username-label'>username</p>
+        <p className='username-label'>username</p>
       </Col>
     </Row>
   );

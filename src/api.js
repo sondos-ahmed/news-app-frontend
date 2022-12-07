@@ -70,3 +70,20 @@ export function getArticleById(article_id) {
     return newArticle;
   });
 }
+
+///////// Ticket 6  View a list of comments associated with an article///////////
+export function getArticleComments(article_id) {
+  return newsApp
+    .get(`api/articles/${article_id}/comments`)
+    .then(({ data: comments }) => {
+      let newComments = [...comments.comments];
+      newComments = newComments.map((comment) => {
+        const eachComment = { ...comment };
+        const commentDate = eachComment.created_at;
+        const date = new Date(commentDate);
+        eachComment.created_at = date.toDateString();
+        return eachComment;
+      });
+      return newComments;
+    });
+}
