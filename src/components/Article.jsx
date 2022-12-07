@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticleById } from "../api.js";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
+import "../css/article.css";
 
 function Article() {
   const [article, setArticle] = useState();
@@ -20,15 +21,15 @@ function Article() {
       <span className='visually-hidden'>Loading...</span>
     </Spinner>
   ) : (
-    <section className='border m-3'>
-      <p className='d-inline m-2'> Article |</p>{" "}
-      <p className='d-inline text-capitalize m-2'> {article?.topic}</p>
+    <section className='border m-3 article-card'>
+      <p className='d-inline '> Article |</p>{" "}
+      <p className='d-inline text-capitalize '> {article?.topic}</p>
       <br />
       <h4 className='mt-3'>{article?.title}</h4>
       <br />
       <p className='text-capitalize'> {article?.author}</p>
       <p> {article?.created_at}</p>
-      <p className='text-justify'>{article?.body}</p>
+      <p>{article?.body}</p>
       <br />
     </section>
   );

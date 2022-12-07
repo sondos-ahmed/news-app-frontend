@@ -2,6 +2,15 @@
   .row {
     text-align: end;
   }
+
+  .username-label {
+    text-align: end;
+  }
+}
+
+#header {
+  background-color: #f7f6f2;
+  text-align: center;
 }
 
 #header > .row {

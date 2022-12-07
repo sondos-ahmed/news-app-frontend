@@ -6,14 +6,15 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <Row id='header'>
-      <Col sm={8}>
+      <Col sm={4}></Col>
+      <Col sm={4}>
         <Link className='site-name' to='/'>
           <h1>North News</h1>
         </Link>
       </Col>
       <Col sm={4}>
         {" "}
-        <p>username</p>
+        <p class='username-label'>username</p>
       </Col>
     </Row>
   );
