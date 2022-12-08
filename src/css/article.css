@@ -3,3 +3,27 @@
   padding: 10px;
   text-align: justify;
 }
+
+.comments-card {
+  background-color: #f7f6f2;
+  border: solid 1px;
+  margin-top: 20px;
+}
+
+.comments-card > .card-body {
+  padding: 0;
+}
+
+/* Ratting star */
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
