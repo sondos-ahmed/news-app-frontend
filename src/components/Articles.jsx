@@ -10,7 +10,6 @@ function Articles() {
   const [loading, setLoading] = useState(true);
   let [searchParams, setSearchParams] = useSearchParams();
 
-  console.log(searchParams.get("topic"));
   useEffect(() => {
     if (!searchParams.get("topic")) {
       getAllArticles().then((articles) => {
@@ -19,7 +18,6 @@ function Articles() {
       });
     } else {
       getArticlesByTopic(searchParams.get("topic")).then((articles) => {
-        console.log(articles);
         setAllArticles(articles);
         setLoading(false);
       });
