@@ -25,7 +25,6 @@ function Articles() {
       });
     }
   }, [searchParams.get("topic"), query]);
-  console.log(query);
   function handelSortSelectionChange(event) {
     setquery((prevQuery) => {
       return { ...prevQuery, sort_by: event.target.value };

@@ -18,12 +18,10 @@ export function getAllArticles(query) {
       },
     })
     .then(({ data: { articles } }) => {
-      console.log(articles);
       const newArticle = [...articles];
       //Sort by Comments count, api doesn't have this option
       if (query.sort_by === "comment_count" && query.order === "DESC") {
         newArticle.sort((a, b) => b.comment_count - a.comment_count);
-        console.log(newArticle, "<<<<<<<<<<<<Sorted");
       } else if (query.sort_by === "comment_count" && query.order === "ASC") {
         newArticle.sort((a, b) => a.comment_count - b.comment_count);
       }
@@ -152,7 +150,6 @@ export function getArticlesByTopic(topic, query) {
       //Sort by Comments count, api doesn't have this option
       if (query.sort_by === "comment_count" && query.order === "DESC") {
         newArticle.sort((a, b) => b.comment_count - a.comment_count);
-        console.log(newArticle, "<<<<<<<<<<<<Sorted");
       } else if (query.sort_by === "comment_count" && query.order === "ASC") {
         newArticle.sort((a, b) => a.comment_count - b.comment_count);
       }
