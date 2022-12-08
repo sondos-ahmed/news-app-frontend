@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticleComments } from "../../api.js";
 import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
+import SubmitComment from "./SubmitComment";
 
 function Comments({ article_id }) {
   const [articleComments, setArticleComments] = useState([]);
@@ -19,6 +20,10 @@ function Comments({ article_id }) {
     </Spinner>
   ) : (
     <section className='comments-card'>
+      <SubmitComment
+        article_id={article_id}
+        setArticleComments={setArticleComments}
+      />
       <h3 className='m-3 text-start'>Comments</h3>
       {articleComments.map((eachComment) => {
         return (

@@ -1,24 +1,19 @@
 import { useEffect, useState } from "react";
-import {
-  getArticleById,
-  getArticleComments,
-  patchArticleVotes,
-} from "../../api.js";
+import { getArticleById } from "../../api.js";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
 import Spinner from "react-bootstrap/Spinner";
 import "../../css/article.css";
 import Alert from "react-bootstrap/Alert";
+import Votes from "./Votes";
 
 export function Article() {
   const [article, setArticle] = useState();
   const [rating, setRating] = useState(0);
-  const [incrementBy, setincrementBy] = useState(0);
   const { article_id } = useParams();
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
 
-  console.log(incrementBy);
   useEffect(() => {
     getArticleById(article_id).then((article) => {
       setArticle(article);
@@ -27,35 +22,24 @@ export function Article() {
     });
   }, [article_id]);
 
-  function handelRating() {
-    setRating((currentRating) => {
-      const newRating = currentRating + 1;
-      return newRating;
-    });
-    patchArticleVotes(article_id)
-      .then(() => {
-        setShow(false);
-      })
-      .catch(() => {
-        setShow(true);
-      });
-  }
   return loading ? (
     <Spinner animation='border' role='status'>
       <span className='visually-hidden'>Loading...</span>
     </Spinner>
   ) : (
     <section className=' m-3'>
-      {" "}
       <Alert variant='danger' show={show}>
         Request failed, please try again!
       </Alert>
-      <section className='article-card'>
+      <section className='article-card p-4'>
         <p className='d-inline'> Article |</p>{" "}
         <p className='d-inline text-capitalize '> {article?.topic}</p>
-        <button type='button' onClick={handelRating}>
-          <span className='star float-end border p-2'>{rating} &#9733;</span>{" "}
-        </button>
+        <Votes
+          article_id={article?.article_id}
+          setShow={setShow}
+          rating={rating}
+          setRating={setRating}
+        />
         <br />
         <h4 className='mt-3'>{article?.title}</h4>
         <br />

@@ -18,7 +18,6 @@ export function getHotArticle() {
   return newsApp
     .get(`api/articles`, { params: { sort_by: "votes" } })
     .then(({ data: { articles } }) => {
-      console.log(articles);
       return articles[0];
     });
 }
@@ -72,7 +71,7 @@ export function getArticleById(article_id) {
   });
 }
 
-///////// Ticket 6  View a list of comments associated with an article///////////
+///////// Ticket 6  View a list of comments associated with an article/////////
 export function getArticleComments(article_id) {
   return newsApp
     .get(`api/articles/${article_id}/comments`)
@@ -92,7 +91,24 @@ export function getArticleComments(article_id) {
 /////////Ticket 7 Vote on an article/////////////////////
 
 export function patchArticleVotes(article_id) {
+  return newsApp.patch(`/api/articles/${article_id}`, { inc_votes: 1 });
+}
+
+/////////Ticket 8 Post a new comment to an existing article/////////
+
+export function searchUser(username) {
+  return newsApp.get(`/api/users`).then(({ data: { users: users } }) => {
+    const result = users.filter((user) => user.username === username);
+    return result[0];
+  });
+}
+
+export function postComment(article_id, name, body) {
+  console.log(article_id, name, body);
+  const newComment = { author: name, body: body };
   return newsApp
-    .patch(`/api/articles/${article_id}`, { inc_votes: 1 })
-    .then((res) => {});
+    .post(`/api/articles/${article_id}/comments`, newComment)
+    .then(({ data: comment }) => {
+      return comment;
+    });
 }
