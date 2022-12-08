@@ -21,7 +21,6 @@ function Login() {
 
     searchUser(username)
       .then((user) => {
-        console.log(user);
         setUser(user);
 
         // This is to persist the logged in user after page reload

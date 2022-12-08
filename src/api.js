@@ -104,7 +104,6 @@ export function searchUser(username) {
 }
 
 export function postComment(article_id, name, body) {
-  console.log(article_id, name, body);
   const newComment = { author: name, body: body };
   return newsApp
     .post(`/api/articles/${article_id}/comments`, newComment)
