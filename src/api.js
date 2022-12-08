@@ -10,7 +10,13 @@ export function getAllTopics() {
 
 export function getAllArticles() {
   return newsApp.get(`api/articles`).then(({ data: { articles } }) => {
-    return articles;
+    const newArticle = [...articles];
+    return newArticle.map((article) => {
+      const eachArticle = { ...article };
+      const date = new Date(eachArticle.created_at);
+      eachArticle.created_at = date.toDateString();
+      return eachArticle;
+    });
   });
 }
 
@@ -109,5 +115,22 @@ export function postComment(article_id, name, body) {
     .post(`/api/articles/${article_id}/comments`, newComment)
     .then(({ data: comment }) => {
       return comment;
+    });
+}
+
+/////////Ticket 9 View a separate page for each topic with a list of related articles/////////
+export function getArticlesByTopic(topic) {
+  return newsApp
+    .get(`api/articles`, {
+      params: { sort_by: "created_at", topic },
+    })
+    .then(({ data: { articles } }) => {
+      const newArticle = [...articles];
+      return newArticle.map((article) => {
+        const eachArticle = { ...article };
+        const date = new Date(eachArticle.created_at);
+        eachArticle.created_at = date.toDateString();
+        return eachArticle;
+      });
     });
 }
