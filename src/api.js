@@ -8,16 +8,31 @@ export function getAllTopics() {
   return newsApp.get(`api/topics`);
 }
 
-export function getAllArticles() {
-  return newsApp.get(`api/articles`).then(({ data: { articles } }) => {
-    const newArticle = [...articles];
-    return newArticle.map((article) => {
-      const eachArticle = { ...article };
-      const date = new Date(eachArticle.created_at);
-      eachArticle.created_at = date.toDateString();
-      return eachArticle;
+export function getAllArticles(query) {
+  return newsApp
+    .get(`api/articles`, {
+      params: {
+        sort_by:
+          !query.sort_by === "comment_count" ? query.sort_by : "created_at",
+        order: query.order,
+      },
+    })
+    .then(({ data: { articles } }) => {
+      const newArticle = [...articles];
+      //Sort by Comments count, api doesn't have this option
+      if (query.sort_by === "comment_count" && query.order === "DESC") {
+        newArticle.sort((a, b) => b.comment_count - a.comment_count);
+      } else if (query.sort_by === "comment_count" && query.order === "ASC") {
+        newArticle.sort((a, b) => a.comment_count - b.comment_count);
+      }
+
+      return newArticle.map((article) => {
+        const eachArticle = { ...article };
+        const date = new Date(eachArticle.created_at);
+        eachArticle.created_at = date.toDateString();
+        return eachArticle;
+      });
     });
-  });
 }
 
 export function getHotArticle() {
@@ -119,13 +134,25 @@ export function postComment(article_id, name, body) {
 }
 
 /////////Ticket 9 View a separate page for each topic with a list of related articles/////////
-export function getArticlesByTopic(topic) {
+export function getArticlesByTopic(topic, query) {
   return newsApp
     .get(`api/articles`, {
-      params: { sort_by: "created_at", topic },
+      params: {
+        sort_by:
+          !query.sort_by === "comment_count" ? query.sort_by : "created_at",
+        topic,
+        order: query.order,
+      },
     })
     .then(({ data: { articles } }) => {
       const newArticle = [...articles];
+
+      //Sort by Comments count, api doesn't have this option
+      if (query.sort_by === "comment_count" && query.order === "DESC") {
+        newArticle.sort((a, b) => b.comment_count - a.comment_count);
+      } else if (query.sort_by === "comment_count" && query.order === "ASC") {
+        newArticle.sort((a, b) => a.comment_count - b.comment_count);
+      }
       return newArticle.map((article) => {
         const eachArticle = { ...article };
         const date = new Date(eachArticle.created_at);
