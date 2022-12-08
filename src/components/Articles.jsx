@@ -4,25 +4,39 @@ import { Link } from "react-router-dom";
 import { getAllArticles, getArticlesByTopic } from "../api.js";
 import Spinner from "react-bootstrap/Spinner";
 import { useSearchParams } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
 function Articles() {
   const [allArticles, setAllArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   let [searchParams, setSearchParams] = useSearchParams();
+  const [query, setquery] = useState({});
 
   useEffect(() => {
     if (!searchParams.get("topic")) {
-      getAllArticles().then((articles) => {
+      getAllArticles(query).then((articles) => {
         setAllArticles(articles);
         setLoading(false);
       });
     } else {
-      getArticlesByTopic(searchParams.get("topic")).then((articles) => {
+      getArticlesByTopic(searchParams.get("topic"), query).then((articles) => {
         setAllArticles(articles);
         setLoading(false);
       });
     }
-  }, [searchParams.get("topic")]);
+  }, [searchParams.get("topic"), query]);
+  console.log(query);
+  function handelSortSelectionChange(event) {
+    setquery((prevQuery) => {
+      return { ...prevQuery, sort_by: event.target.value };
+    });
+  }
+
+  function handelOrderChange(event) {
+    setquery((prevQuery) => {
+      return { ...prevQuery, order: event.target.value };
+    });
+  }
 
   return loading ? (
     <Spinner animation='border' role='status'>
@@ -30,6 +44,29 @@ function Articles() {
     </Spinner>
   ) : (
     <div>
+      <Card className=' flex-row vw-100 justify-content-end'>
+        <label className='m-2'>Sort by:</label>
+        <Form.Select
+          aria-label='sort by select'
+          onChange={handelSortSelectionChange}
+          className='w-25 '
+        >
+          <option value='created_at'>Date</option>
+          <option value='comment_count'>Comments</option>
+          <option value='votes'>Rating</option>
+        </Form.Select>
+
+        <label className='m-2'>Order</label>
+        <Form.Select
+          aria-label='sort by select'
+          onChange={handelOrderChange}
+          className='w-25 '
+        >
+          <option value='DESC'>Descending</option>{" "}
+          <option value='ASC'>Ascending</option>
+        </Form.Select>
+      </Card>
+
       {allArticles.map((article) => {
         return (
           <Card key={article.article_id} className='m-3 p-3'>
