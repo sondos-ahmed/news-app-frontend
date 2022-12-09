@@ -161,3 +161,9 @@ export function getArticlesByTopic(topic, query) {
       });
     });
 }
+
+/////////Ticket 11 Delete Comment/////////
+
+export function deleteComment(comment_id) {
+  return newsApp.delete(`/api/comments/${comment_id}`);
+}
