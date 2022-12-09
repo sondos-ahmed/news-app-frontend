@@ -2,10 +2,11 @@
   height: 85vh;
 }
 
-#main {
+.main {
   background-image: url("../img/mainBG.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  margin: auto;
 }
 
 .home {
@@ -15,4 +16,34 @@
 #footer > .nav {
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.row > .main {
+  margin: auto;
+}
+
+.hottopic {
+  color: white;
+}
+
+.main > .card {
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.spinner {
+  margin: auto;
+}
+
+.ma {
+  height: 100vh;
+}
+
+#sports-section {
+  height: 100vh;
+  background-color: #f7f6f2;
+}
+#cooking-section {
+  height: 100vh;
+  background-color: #f7f6f2;
 }

@@ -1,18 +1,11 @@
 import Card from "react-bootstrap/Card";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getLatestSportsArticles } from "../api.js";
+import { getLatestSportsArticles } from "../../api.js";
 import Spinner from "react-bootstrap/Spinner";
 
 function Sports({ loading, setLoading }) {
   const [latestSports, setlatestSports] = useState([]);
-
-  useEffect(() => {
-    getLatestSportsArticles().then((articles) => {
-      setlatestSports(articles);
-      setLoading(false);
-    });
-  }, []);
 
   return loading ? (
     <Spinner animation='border' role='status' className='spinner'>

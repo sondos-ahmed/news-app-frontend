@@ -1,7 +1,6 @@
 import "./css/App.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-import Home from "./components/Home";
 import Login from "./components/Login";
 import Article from "./components/Article/Article";
 import Articles from "./components/Articles";
@@ -27,7 +26,7 @@ function App() {
       <Header />
       <Nav />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Articles />} />
         <Route path='/login' element={<Login />} />
         <Route path='/articles/:article_id' element={<Article />} />
         <Route path='/articles' element={<Articles />} />
