@@ -4,7 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { deleteComment } from "../../api.js";
 
-function DeleteComment({ comment_id, author, setDeletedComment }) {
+function DeleteComment({
+  comment_id,
+  author,
+  setDeletedComment,
+  setShowAlert,
+}) {
   const { user } = useContext(UserContext);
   const [show, setShow] = useState(false);
 
@@ -15,7 +20,9 @@ function DeleteComment({ comment_id, author, setDeletedComment }) {
   function handelDeleteComment() {
     setShow(false);
     setDeletedComment(comment_id);
-    deleteComment(comment_id);
+    deleteComment(comment_id).catch(() => {
+      setShowAlert(true);
+    });
   }
   return user.username === author ? (
     <div>
