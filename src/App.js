@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useContext } from "react";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
@@ -30,6 +31,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/articles/:article_id' element={<Article />} />
         <Route path='/articles' element={<Articles />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </Container>
   );

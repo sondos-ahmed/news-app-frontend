@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAllArticles, getArticlesByTopic } from "../api.js";
 import Spinner from "react-bootstrap/Spinner";
 import { useSearchParams } from "react-router-dom";
@@ -11,6 +11,7 @@ function Articles() {
   const [loading, setLoading] = useState(true);
   let [searchParams, setSearchParams] = useSearchParams();
   const [query, setquery] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!searchParams.get("topic")) {
@@ -19,10 +20,14 @@ function Articles() {
         setLoading(false);
       });
     } else {
-      getArticlesByTopic(searchParams.get("topic"), query).then((articles) => {
-        setAllArticles(articles);
-        setLoading(false);
-      });
+      getArticlesByTopic(searchParams.get("topic"), query)
+        .then((articles) => {
+          setAllArticles(articles);
+          setLoading(false);
+        })
+        .catch(() => {
+          navigate("/*");
+        });
     }
   }, [searchParams.get("topic"), query]);
   function handelSortSelectionChange(event) {
@@ -50,7 +55,7 @@ function Articles() {
           onChange={handelSortSelectionChange}
           className='w-25 '
         >
-          <option value='created_at'>Date</option>
+          <option defaultValue='created_at'>Date</option>
           <option value='comment_count'>Comments</option>
           <option value='votes'>Rating</option>
         </Form.Select>
@@ -61,7 +66,7 @@ function Articles() {
           onChange={handelOrderChange}
           className='w-25 '
         >
-          <option value='DESC'>Descending</option>{" "}
+          <option defaultValue='DESC'>Descending</option>{" "}
           <option value='ASC'>Ascending</option>
         </Form.Select>
       </Card>

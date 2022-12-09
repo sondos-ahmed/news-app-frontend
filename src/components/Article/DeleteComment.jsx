@@ -24,7 +24,7 @@ function DeleteComment({
       setShowAlert(true);
     });
   }
-  return user.username === author ? (
+  return user?.username === author ? (
     <div>
       <button onClick={handleShow}>Remove</button>
 
