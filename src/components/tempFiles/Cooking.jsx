@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import { getOrderedCookingsArticles } from "../api.js";
+import { getOrderedCookingsArticles } from "../../api.js";
 import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 
@@ -8,12 +8,6 @@ function Cooking({ loading, setLoading }) {
   const [index, setIndex] = useState(0);
   const [cookingArticles, setcookingArticles] = useState([]);
 
-  useEffect(() => {
-    getOrderedCookingsArticles().then((articles) => {
-      setcookingArticles(articles);
-      setLoading(false);
-    });
-  }, []);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
