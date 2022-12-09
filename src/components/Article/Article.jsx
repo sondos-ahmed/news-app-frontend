@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArticleById } from "../../api.js";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Comments from "./Comments";
 import Spinner from "react-bootstrap/Spinner";
 import "../../css/article.css";
@@ -13,13 +13,18 @@ export function Article() {
   const { article_id } = useParams();
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getArticleById(article_id).then((article) => {
-      setArticle(article);
-      setRating(article.votes);
-      setLoading(false);
-    });
+    getArticleById(article_id)
+      .then((article) => {
+        setArticle(article);
+        setRating(article.votes);
+        setLoading(false);
+      })
+      .catch(() => {
+        navigate("/*");
+      });
   }, [article_id]);
 
   return loading ? (
