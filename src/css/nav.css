@@ -6,3 +6,6 @@
 .navbar-collapse {
   text-transform: capitalize;
 }
+.navbar-nav > .nav-link {
+  color: white;
+}

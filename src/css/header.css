@@ -9,7 +9,7 @@
 }
 
 #header {
-  background-color: #f7f6f2;
+  background-color: #e74308;
   text-align: center;
 }
 
@@ -18,18 +18,18 @@
 }
 
 .site-name {
-  color: #e74308;
+  color: #f7f6f2;
   text-decoration: none;
 }
 a.site-name :active {
-  color: #e74308;
+  color: #f7f6f2;
   text-decoration: none;
 }
 a.site-name :visited {
-  color: #e74308;
+  color: #f7f6f2;
   text-decoration: none;
 }
 a.site-name :hover {
-  color: #e74308;
+  color: gray;
   text-decoration: none;
 }

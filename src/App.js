@@ -25,7 +25,6 @@ function App() {
   return (
     <Container className='App' fluid>
       <Header />
-      <Nav />
       <Routes>
         <Route path='/' element={<Articles />} />
         <Route path='/login' element={<Login />} />

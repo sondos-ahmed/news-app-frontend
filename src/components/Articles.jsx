@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllArticles, getArticlesByTopic } from "../api.js";
 import Spinner from "react-bootstrap/Spinner";
+import CarouselArticles from "./CarouselArticles";
+import {Row,Container, Col} from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import "../css/articles.css"
 
 function Articles() {
   const [allArticles, setAllArticles] = useState([]);
@@ -47,8 +50,16 @@ function Articles() {
       <span className='visually-hidden'>Loading...</span>
     </Spinner>
   ) : (
-    <div>
-      <Card className=' flex-row vw-100 justify-content-end'>
+    <Container  className="bg-light"> 
+    <Container className='py-3 justify-content-center'>
+    <Row className='carousel-articles'>
+        <CarouselArticles
+          className='text-white bg-secondary'
+          allArticles={allArticles}
+        />
+      </Row>
+      <Row className="justify-content-center">
+     
         <label className='m-2'>Sort by:</label>
         <Form.Select
           aria-label='sort by select'
@@ -69,8 +80,8 @@ function Articles() {
           <option defaultValue='DESC'>Descending</option>{" "}
           <option value='ASC'>Ascending</option>
         </Form.Select>
-      </Card>
-
+      </Row>
+      </Container>
       {allArticles.map((article) => {
         return (
           <Card key={article.article_id} className='m-3 p-3'>
@@ -85,7 +96,7 @@ function Articles() {
           </Card>
         );
       })}
-    </div>
+    </Container>
   );
 }
 
