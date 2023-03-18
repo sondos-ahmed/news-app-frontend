@@ -2,3 +2,15 @@
   color: #e74308;
   text-decoration: none;
 }
+
+
+
+.carousel-articles > .carousel > .carousel-inner {
+  overflow: unset;
+}
+
+
+.carousel-item{
+  height: 20rem;
+  background: #d4d1d1;
+}

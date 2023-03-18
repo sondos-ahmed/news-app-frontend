@@ -4,6 +4,8 @@ import "../css/header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
+import Nav from "./Nav";
+
 
 function Header() {
   const { user, setUser } = useContext(UserContext);
@@ -19,21 +21,27 @@ function Header() {
   }
   return (
     <Row id='header'>
-      <Col sm={4}></Col>
       <Col sm={4}>
-        <Link className='site-name' to='/'>
+        <Link className='text-decoration-none text-start text-white' to='/'>
           <h1>North News</h1>
         </Link>
       </Col>
-      <Col sm={4} className='d-flex justify-content-end'>
+      <Col className='text-start' sm={4}>
+        <Nav />
+      </Col>
+      <Col sm={2} className='text-end'>
         {" "}
-        <p className='username-label  m-4'>
+        <p className='username-label text-capitalize pt-3 text-white'>
           {" "}
           {user?.username !== undefined
-            ? `Signed in as: ${user.username}`
+            ? `Hello: ${user.username}`
             : `Hello Guest!`}
         </p>
-        <button onClick={handleLogout}>{user ? "Log out" : "Log in"}</button>
+      </Col>
+      <Col sm={2}>
+        <button className='text-white pt-3 ' onClick={handleLogout}>
+          {user ? "Log out" : "Log in"}
+        </button>
       </Col>
     </Row>
   );
