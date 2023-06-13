@@ -9,15 +9,30 @@ function CarouselArticles({ allArticles }) {
     setIndex(selectedIndex);
   };
 
+  //change the Carousal data from parametery to this array
+
+  const articles = allArticles.filter((article, index) => {
+    if (index <= 5) {
+
+      const imageUrl = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/spaghetti-carbonara-863d8d7.jpg?quality=90&webp=true&fit=700,350";
+
+    // Add the `image` property to the article object
+    return { ...article, image: imageUrl }
+   };
+   return null; 
+  });
+
+  console.log(articles);
+
   return (
     <Carousel
       variant='dark'
       activeIndex={index}
       onSelect={handleSelect}
-      classNAme='text-white bg-secondary'
+      className='text-white bg-secondary'
     >
-      {allArticles.map((article, index) => {
-        return index <= 5 ? (
+      {articles.map((article, index) => {
+        return (
           <Carousel.Item key={article?.article_id}>
             <Carousel.Caption>
               <h3 className='baltic-color'>{article?.title}</h3>
@@ -30,9 +45,8 @@ function CarouselArticles({ allArticles }) {
               </Link>
             </Carousel.Caption>
           </Carousel.Item>
-        ) : (
-          ""
-        );
+        ) 
+        
       })}
     </Carousel>
   );
