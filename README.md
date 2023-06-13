@@ -3,7 +3,7 @@
 Welcome to the North News Frontend App! This repository contains the frontend application developed during my time as a trainee at the Northcoders coding bootcamp. In this README, you will find information on how to install the necessary dependencies, run the app, and contribute to the project.
 
 ## Production Link
-To access the live version of the North News App, click on the following link: [North News App](https://northnewsapp.netlify.app/). Feel free to explore the app and stay up-to-date with the latest news!
+To access the live version of the North News App, click on the following link: [North News App](https://northnewsapp.netlify.app/)
 
 ## Backend API Repository
 The backend API that powers the North News App can be found in a separate repository. You can access it by visiting the following link: [North News API](https://github.com/sondos-ahmed/sondos-be-nc-news). The API handles data retrieval, allowing the frontend app to display news articles and other related information.
