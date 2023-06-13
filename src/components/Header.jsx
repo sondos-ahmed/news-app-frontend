@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
 import Nav from "./Nav";
+import logo from "../assets/logo.png"
 
 
 function Header() {
@@ -20,13 +21,13 @@ function Header() {
     }
   }
   return (
-    <Row id='header'>
-      <Col sm={4}>
-        <Link className='text-decoration-none text-start text-white' to='/'>
-          <h1>North News</h1>
+    <Row id='header' className="align-items-center">
+      <Col sm={4} className='text-start'>
+        <Link  to='/'>
+          <img src={logo} alt="North News Logo" height="150px" width="150px"/>
         </Link>
       </Col>
-      <Col className='text-start' sm={4}>
+      <Col className='text-start ' sm={4}>
         <Nav />
       </Col>
       <Col sm={2} className='text-end'>
@@ -39,7 +40,7 @@ function Header() {
         </p>
       </Col>
       <Col sm={2}>
-        <button className='text-white pt-3 ' onClick={handleLogout}>
+        <button className='text-white ' onClick={handleLogout}>
           {user ? "Log out" : "Log in"}
         </button>
       </Col>
