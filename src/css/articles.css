@@ -12,5 +12,10 @@
 
 .carousel-item{
   height: 20rem;
-  background: #d4d1d1;
+  background: #d4d1d15e;
+}
+
+
+.card-img-end{
+  width: 250px;
 }

@@ -29,7 +29,7 @@ function CarouselArticles({ allArticles }) {
       variant='dark'
       activeIndex={index}
       onSelect={handleSelect}
-      className='text-white bg-secondary'
+      className='text-white wv-100'
     >
       {articles.map((article, index) => {
         return (

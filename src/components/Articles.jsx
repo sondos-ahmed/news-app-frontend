@@ -8,6 +8,7 @@ import {Row,Container, Col} from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import "../css/articles.css"
+import image from "../img/mainBG.jpg"
 
 function Articles() {
   const [allArticles, setAllArticles] = useState([]);
@@ -50,8 +51,8 @@ function Articles() {
       <span className='visually-hidden'>Loading...</span>
     </Spinner>
   ) : (
-    <Container  className="bg-light"> 
-    <Container className='py-3 justify-content-center'>
+    <Container  fluid  className="bg-light wv-100"> 
+    <Container  fluid className='wv-100'>
     <Row className='carousel-articles'>
         <CarouselArticles
           className='text-white bg-secondary'
@@ -84,15 +85,18 @@ function Articles() {
       </Container>
       {allArticles.map((article) => {
         return (
-          <Card key={article.article_id} className='m-3 p-3'>
-            <Card.Title>{article?.title}</Card.Title>
-            <Card.Subtitle className='mb-2 text-muted'>
+          <Card key={article.article_id} className=' p-3 text-start comments-card border-0 bg-light flex-row border-bottom border-top-none  m-0'>
+            
+             <img src={image} alt="Article Image" className=" pr-3 card-img-end" />
+             <div class="card-body p-4 ">
+            <Card.Title className="fs-5 fw-bold">{article?.title}</Card.Title>
+            <Card.Subtitle className='mb-2 fs-5 text-capitalize fw-bold text-muted'>
               {article?.topic}
             </Card.Subtitle>
-            <Card.Subtitle className='mb-2'>
+            <Card.Subtitle className='mb-4 '>
               {article?.created_at}
             </Card.Subtitle>
-            <Link to={`/articles/${article?.article_id}`}>Article Link</Link>
+            <Link className="fs-5 text-white bg-dark p-3 mt-3" to={`/articles/${article?.article_id}`}>Article Link</Link></div>
           </Card>
         );
       })}
