@@ -29,17 +29,17 @@ function CarouselArticles({ allArticles }) {
       variant='dark'
       activeIndex={index}
       onSelect={handleSelect}
-      className='text-white wv-100'
+      className='text-white'
     >
       {articles.map((article, index) => {
         return (
           <Carousel.Item key={article?.article_id}>
             <Carousel.Caption>
               <h3 className='baltic-color'>{article?.title}</h3>
-              <h5 className='mb-2 mulberry text-capitalize'>{`By: ${article?.author}`}</h5>
+              <h5 className='mb-2  text-capitalize'>{`By: ${article?.author}`}</h5>
               <Link
                 to={`/articles/${article?.article_id}`}
-                className='mulberry text-decoration-none'
+                className=' text-decoration-none'
               >
                 Read more...
               </Link>

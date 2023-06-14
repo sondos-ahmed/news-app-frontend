@@ -15,6 +15,11 @@
   background: #d4d1d15e;
 }
 
+.carousel-item-start{
+margin-left: 12px;
+margin-right: 12px;
+
+}
 
 .card-img-end{
   width: 250px;
