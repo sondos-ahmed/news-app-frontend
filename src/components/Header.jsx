@@ -22,25 +22,25 @@ function Header() {
   }
   return (
     <Row id='header' className="align-items-center">
-      <Col sm={4} className='text-start'>
+      <Col sm={2} className='text-start'>
         <Link  to='/'>
           <img src={logo} alt="North News Logo" height="150px" width="150px"/>
         </Link>
       </Col>
-      <Col className='text-start ' sm={4}>
+      <Col className='text-start fs-5 fw-bold' sm={6}>
         <Nav />
       </Col>
-      <Col sm={2} className='text-end'>
+      <Col sm={3} className='text-end'>
         {" "}
-        <p className='username-label text-capitalize pt-3 text-white'>
+        <p className='username-label fs-5 fw-bold text-capitalize pt-3 text-white'>
           {" "}
           {user?.username !== undefined
             ? `Hello: ${user.username}`
             : `Hello Guest!`}
         </p>
       </Col>
-      <Col sm={2}>
-        <button className='text-white ' onClick={handleLogout}>
+      <Col sm={1}>
+        <button className='text-white fs-5 fw-bold' onClick={handleLogout}>
           {user ? "Log out" : "Log in"}
         </button>
       </Col>
