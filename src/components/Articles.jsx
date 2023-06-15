@@ -52,20 +52,20 @@ function Articles() {
     </Spinner>
   ) : (
     <Container  fluid  className="bg-light wv-100"> 
-    <Container  fluid className='wv-100'>
+    
     <Row className='carousel-articles'>
         <CarouselArticles
           className='text-white bg-secondary'
           allArticles={allArticles}
         />
-      </Row>
-      <Row className="justify-content-center">
+    </Row>
+    <div className="d-flex ">
      
-        <label className='m-2'>Sort by:</label>
+        <label className='m-2'>Sort by </label>
         <Form.Select
           aria-label='sort by select'
           onChange={handelSortSelectionChange}
-          className='w-25 '
+          className='w-25 m-1'
         >
           <option defaultValue='created_at'>Date</option>
           <option value='comment_count'>Comments</option>
@@ -76,19 +76,19 @@ function Articles() {
         <Form.Select
           aria-label='sort by select'
           onChange={handelOrderChange}
-          className='w-25 '
+          className='w-25 m-1'
         >
           <option defaultValue='DESC'>Descending</option>{" "}
           <option value='ASC'>Ascending</option>
         </Form.Select>
-      </Row>
-      </Container>
+      </div>
+     
       {allArticles.map((article) => {
         return (
           <Card key={article.article_id} className=' p-3 text-start comments-card border-0 bg-light flex-row border-bottom border-top-none  m-0'>
             
              <img src={image} alt="Article Image" className=" pr-3 card-img-end" />
-             <div class="card-body p-4 ">
+             <div className="card-body p-4 ">
             <Card.Title className="fs-5 fw-bold">{article?.title}</Card.Title>
             <Card.Subtitle className='mb-2 fs-5 text-capitalize fw-bold text-muted'>
               {article?.topic}

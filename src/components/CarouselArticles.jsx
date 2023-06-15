@@ -22,7 +22,6 @@ function CarouselArticles({ allArticles }) {
    return null; 
   });
 
-  console.log(articles);
 
   return (
     <Carousel
@@ -34,6 +33,11 @@ function CarouselArticles({ allArticles }) {
       {articles.map((article, index) => {
         return (
           <Carousel.Item key={article?.article_id}>
+            <img
+          className="d-block w-100"
+          src="https://img.freepik.com/free-vector/realistic-bokeh-background_52683-64201.jpg"
+          alt="First slide"
+        />
             <Carousel.Caption>
               <h3 className='baltic-color'>{article?.title}</h3>
               <h5 className='mb-2  text-capitalize'>{`By: ${article?.author}`}</h5>
