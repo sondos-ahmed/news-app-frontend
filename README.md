@@ -1,6 +1,5 @@
 # North News Frontend App
-
-Welcome to the North News Frontend App! This repository contains the frontend application developed during my time as a trainee at the Northcoders coding bootcamp. In this README, you will find information on how to install the necessary dependencies, run the app, and contribute to the project.
+This repository contains the frontend application developed during my time as a trainee at the Northcoders coding bootcamp. In this README, you will find information on how to install the necessary dependencies, run the app, and contribute to the project.
 
 ## Production Link
 To access the live version of the North News App, click on the following link: [North News App](https://northnewsapp.netlify.app/)
