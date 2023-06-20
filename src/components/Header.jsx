@@ -22,29 +22,25 @@ function Header() {
   }
   return (
     <Row id='header' className="align-items-center">
-      <Col sm={2} className='text-start'>
-        <Link  to='/'>
-          <img src={logo} alt="North News Logo" height="150px" width="150px"/>
-        </Link>
-      </Col>
-      <Col className='text-start fs-5 fw-bold' sm={6}>
-        <Nav />
-      </Col>
-      <Col sm={3} className='text-end'>
-        {" "}
-        <p className='username-label fs-5 fw-bold text-capitalize pt-3 text-white'>
-          {" "}
-          {user?.username !== undefined
-            ? `Hello: ${user.username}`
-            : `Hello Guest!`}
-        </p>
-      </Col>
-      <Col sm={1}>
-        <button className='text-white fs-5 fw-bold' onClick={handleLogout}>
-          {user ? "Log out" : "Log in"}
-        </button>
-      </Col>
-    </Row>
+    <Col xs={12} sm={12} md={2} className='text-start mb-2 mb-md-0'>
+      <Link to='/'>
+        <img src={logo} alt="North News Logo" height="150px" width="150px" />
+      </Link>
+    </Col>
+    <Col className='text-start fs-5 fw-bold ' xs={12} sm={4} md={6}>
+      <Nav />
+    </Col>
+    <Col sm={4} md={3} xs={12} className='text-end text-xs-start'>
+      <p className='username-label fs-5 fw-bold text-capitalize pt-3 text-white'>
+        {user?.username !== undefined ? `Hello: ${user.username}` : `Hello Guest!`}
+      </p>
+    </Col>
+    <Col sm={4} md={1} xs={12} className='text-end text-xs-start'>
+      <button className='text-white fs-5 fw-bold' onClick={handleLogout}>
+        {user ? "Log out" : "Log in"}
+      </button>
+    </Col>
+  </Row>
   );
 }
 
